@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class UserRegistration {
     Scanner input = new Scanner(System.in);
     private static final String NAME_PATTERN ="[A-Z][a-z]{2,}";
-
+    private static final String EMAIL_PATTERN="^[A-Za-z]+(\\.[a-z A-z]+)?@[a-zA-z]{2,6}\\.[a-zA-Z]{2,6}([.][a-zA-z]{2,6})?$";
     private String setFirstName() {
         System.out.println("Enter the FirstName\nFirst Name Should Contains Minimum of 3 Characters\n " +
                            "First Letter Should be in Capital");
@@ -27,6 +27,15 @@ public class UserRegistration {
         Boolean result = pattern.matcher(setLastName()).matches();
         System.out.println(printResult(result));
     }
+    private String setEmail(){
+        System.out.println("Enter The Email Address");
+        return input.next();
+    }
+    public void validateEmail(){
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Boolean result = pattern.matcher(setEmail()).matches();
+        System.out.println(printResult(result));
+    }
     public String printResult(Boolean result){
         if (Boolean.TRUE.equals(result)) {
             return "Your Entry is Valid";
@@ -38,5 +47,6 @@ public class UserRegistration {
         UserRegistration user = new UserRegistration();
         user.validateFirstName();
         user.validateLastName();
+        user.validateEmail();
     }
 }

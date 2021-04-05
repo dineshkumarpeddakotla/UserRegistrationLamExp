@@ -5,8 +5,9 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
     Scanner input = new Scanner(System.in);
-    private static final String NAME_PATTERN ="[A-Z][a-z]{2,}";
-    private static final String EMAIL_PATTERN="^[A-Za-z]+(\\.[a-z A-z]+)?@[a-zA-z]{2,6}\\.[a-zA-Z]{2,6}([.][a-zA-z]{2,6})?$";
+    private static final String NAME_PATTERN =("[A-Z][a-z]{2,}");
+    private static final String EMAIL_PATTERN=("^[A-Za-z]+(\\.[a-z A-z]+)?@[a-zA-z]{2,6}\\.[a-zA-Z]{2,6}([.][a-zA-z]{2,6})?$");
+    private static final String MOBILE_NUMBER_PATTERN =("^[0]?([+][0-9]{2,3}[-])?[6-9]+[0-9]{9}");
     private String setFirstName() {
         System.out.println("Enter the FirstName\nFirst Name Should Contains Minimum of 3 Characters\n " +
                            "First Letter Should be in Capital");
@@ -36,6 +37,15 @@ public class UserRegistration {
         Boolean result = pattern.matcher(setEmail()).matches();
         System.out.println(printResult(result));
     }
+    private String setMobileNumber(){
+        System.out.println("Enter The Mobile Number");
+        return input.next();
+    }
+    public void validateMobileNumber(){
+        Pattern pattern = Pattern.compile(MOBILE_NUMBER_PATTERN);
+        Boolean result = pattern.matcher(setMobileNumber()).matches();
+        System.out.println(printResult(result));
+    }
     public String printResult(Boolean result){
         if (Boolean.TRUE.equals(result)) {
             return "Your Entry is Valid";
@@ -48,5 +58,6 @@ public class UserRegistration {
         user.validateFirstName();
         user.validateLastName();
         user.validateEmail();
+        user.validateMobileNumber();
     }
 }

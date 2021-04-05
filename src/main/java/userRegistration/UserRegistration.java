@@ -8,16 +8,26 @@ public class UserRegistration {
     private static final String NAME_PATTERN ="[A-Z][a-z]{2,}";
 
     private String setFirstName() {
-        System.out.println("Enter the FirstName\nFirst Name Should Contains Minimum of 3 Characters " +
-                "\n First Letter Should be in Capital");
+        System.out.println("Enter the FirstName\nFirst Name Should Contains Minimum of 3 Characters\n " +
+                           "First Letter Should be in Capital");
         return input.nextLine();
     }
     public void validateFirstName(){
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         Boolean result = pattern.matcher(setFirstName()).matches();
-        System.out.println(nameResult(result));
+        System.out.println(printResult(result));
     }
-    public String nameResult(Boolean result){
+    private String setLastName() {
+        System.out.println("Enter the LastName\nLast Name Should Contains Minimum of 3 Characters\n " +
+                           "First Letter Should be in Capital");
+        return input.nextLine();
+    }
+    public void validateLastName(){
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
+        Boolean result = pattern.matcher(setLastName()).matches();
+        System.out.println(printResult(result));
+    }
+    public String printResult(Boolean result){
         if (Boolean.TRUE.equals(result)) {
             return "Your Entry is Valid";
         }else
@@ -27,5 +37,6 @@ public class UserRegistration {
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validateFirstName();
+        user.validateLastName();
     }
 }

@@ -7,7 +7,7 @@ import userRegistration.UserRegistrationException;
 
 import java.util.Arrays;
 import java.util.Collection;
-
+//Parametized
 @RunWith(Parameterized.class)
 public class ParameterizedEmail {
     String email;

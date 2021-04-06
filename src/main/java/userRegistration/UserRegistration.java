@@ -38,11 +38,9 @@ public class UserRegistration {
         }
 
     }
-    /*
-     * Creating Boolean value and checking only for "abc.xyz@pqrs.lm" type,
-     * later will check for more accurate email
-     * more accurate email validator added
-     */
+
+     //Creating Boolean value and checking more accurate email
+
     public Boolean validateEmail(String email) throws UserRegistrationException {
         try {
             if (email.length() == 0)

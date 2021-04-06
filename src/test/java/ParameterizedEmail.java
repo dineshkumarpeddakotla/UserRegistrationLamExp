@@ -1,11 +1,13 @@
-import userRegistration.UserRegistration;
-import org.junit.jupiter.api.Assertions;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import userRegistration.UserRegistration;
+import userRegistration.UserRegistrationException;
+
 import java.util.Arrays;
 import java.util.Collection;
-
+//Parametized
 @RunWith(Parameterized.class)
 public class ParameterizedEmail {
     String email;
@@ -16,19 +18,20 @@ public class ParameterizedEmail {
     }
     @Parameterized.Parameters
     public static Collection data() {
-        return Arrays.asList(new Object[][]{
-                {"abc@yahoo.com", true}, {"abc-100@yahoo.com", true}, {"abc.100@yahoo.com", true}, {"abc111@abc.com", true},
-                {"abc-100@abc.net", true}, {"abc.100@abc.com.au", true}, {"abc@1.com", true}, {"abc@gmail.com.com", true},
-                {"abc+100@gmail.com", true},
-
-                {"abc", false}, {"abc@.com.my", false}, {"abc123@gmail.a", false}, {"abc123@.com", false}, {"abc123@.com.com", false},
-                {".abc@abc.com", false}, {"abc()*@gmail.com", false}, {"abc@%*.com", false}, {"abc..2002@gmail.com", false},
-                {"abc.@gmail.com", false}, {"abc@abc@gmail.com", false}, {"abc@gmail.com.1a", false}, {"abc@gmail.com.aa.au ", false}});
+        return Arrays.asList(new Object[][]{{null, false}, {"",true}});
     }
     @Test
-    public void givenEmail_WhenProper_returnDesiredValue(){
-        UserRegistration testEmail = new UserRegistration();
-        boolean emailResult = testEmail.validateEmail(this.email);
-        Assertions.assertEquals(this.emailResult, emailResult);
+    public void givenEmail_WhenObeysCondition_returnAsDesired() {
+      UserRegistration test_email = new UserRegistration();
+        try {
+            //Expecting the exceptions
+            test_email.validateEmail(this.email);
+            ExpectedException exception = ExpectedException.none();
+            exception.expect(UserRegistrationException.class);
+        } catch (UserRegistrationException e) {
+            e.printStackTrace();
+
+        }
+
     }
 }

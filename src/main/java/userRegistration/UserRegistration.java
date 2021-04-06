@@ -12,7 +12,7 @@ public class UserRegistration {
     public Boolean validateFirstName(String firstName) throws UserRegistrationException {
         try {
             if (firstName.length() == 0)
-                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Enterd Empty First Name");
+                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Entered Empty First Name");
             else {
                 Pattern pattern = Pattern.compile(NAME_PATTERN);
                 return pattern.matcher(firstName).matches();
@@ -27,7 +27,7 @@ public class UserRegistration {
     public Boolean validateLastName(String lastName) throws UserRegistrationException {
         try {
             if (lastName.length() == 0)
-                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Enterd Empty Last Name");
+                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Entered Empty Last Name");
             else {
                 Pattern pattern = Pattern.compile(NAME_PATTERN);
                 return pattern.matcher(lastName).matches();
@@ -44,7 +44,7 @@ public class UserRegistration {
     public Boolean validateEmail(String email) throws UserRegistrationException {
         try {
             if (email.length() == 0)
-                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Enterd Empty Email");
+                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Entered Empty Email");
             else {
                 Pattern pattern = Pattern.compile(EMAIL_PATTERN);
                 return pattern.matcher(email).matches();
@@ -63,7 +63,7 @@ public class UserRegistration {
     public Boolean validateMobileNumber(String mobileNumber) throws UserRegistrationException {
         try {
             if (mobileNumber.length() == 0)
-                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Enterd Empty Mobile Number");
+                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Entered Empty Mobile Number");
             else {
                 Pattern pattern = Pattern.compile(MOBILE_NUMBER_PATTERN);
                 return pattern.matcher(mobileNumber).matches();
@@ -79,7 +79,7 @@ public class UserRegistration {
     public Boolean validatePassword(String password) throws UserRegistrationException {
         try {
             if (password.length() == 0)
-                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Enterd Empty Password");
+                throw new UserRegistrationException(UserRegistrationException.exceptionType.emptyInput,"You Entered Empty Password");
             else {
                 Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
                 return pattern.matcher(password).matches();

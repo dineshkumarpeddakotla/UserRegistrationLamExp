@@ -1,14 +1,16 @@
 package userRegistration;
 
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
     Scanner input = new Scanner(System.in);
+
     private static final String NAME_PATTERN = ("[A-Z][a-z]{2,}");
-    private static final String EMAIL_PATTERN= ("^[A-Za-z]+(\\.[a-z A-z]+)?@[a-zA-z]{2,6}\\.[a-zA-Z]{2,6}([.][a-zA-z]{2,6})?$");
+    private static final String EMAIL_PATTERN= ("^[A-Za-z]+([.+-]?[a-z A-z0-9]+)?@[a-zA-z0-9]{1,6}\\.[a-zA-Z]{2,6},?([.][a-zA-z+,]{2,6})?$");
     private static final String MOBILE_NUMBER_PATTERN = ("^[0]?([+][0-9]{2,3}[-])?[6-9]+[0-9]{9}");
     private static final String PASSWORD_PATTERN = ("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()]).{8,}$");
+
     private String setFirstName() {
         System.out.println("Enter the FirstName\nFirst Name Should Contains Minimum of 3 Characters\n " +
                            "First Letter Should be in Capital");
@@ -61,14 +63,13 @@ public class UserRegistration {
             return "Your Entry is Valid";
         }else
             return "Your Enter is Invalid";
-
     }
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validateFirstName();
         user.validateLastName();
-        user.validateEmail();
         user.validateMobileNumber();
         user.validatePassword();
+        user.validateEmail();
     }
 }
